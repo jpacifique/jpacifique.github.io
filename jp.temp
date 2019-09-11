@@ -57,6 +57,7 @@
 			<!--\n-><p>;<p>\n<p>-></p>\n<p>;EOF-></p>EOF-->
 
 			$$article-text%%
+			$$href%%
 
 			<p>
 			<i> ~$$taken-from%%: $$source%%</i></p>
