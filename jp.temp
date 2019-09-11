@@ -31,7 +31,7 @@
 		text-align: justify;">
 		
 
-		<a href="/zh/index.html" style="color:black">##home%%</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="/zh/archive.html"style="color:black">##archive%%</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="/zh/about.html"style="color:black">$$about%%</a>
+		<a href="/zh/index.html" style="color:black">$$home%%</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="/zh/archive.html"style="color:black">$$archive%%</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="/zh/about.html"style="color:black">$$about%%</a>
 
 		
 		</div>
@@ -45,7 +45,7 @@
 
 			<p align="right">$$date%%</p>
 
-			<img src="img.jpg" style="border:1px solid black"
+			<img src="$$img.jpg%%" style="border:1px solid black"
 			alt="$$img-alt%%" 
 			width="100%">
 
