@@ -48,9 +48,13 @@
 			<img src="$$img.jpg%%" style="border:1px solid black"
 			alt="$$img-alt%%" 
 			width="100%">
+			
+			<div align="middle"><font color="grey" size="2">
+			$$img-alt%%
+			</font></div>
 
 
-			<h2>$$article-title%%</h2>
+			<h2 align="right">$$article-title%%</h2>
 
 			<i>$$article-meta%%</i>
 
