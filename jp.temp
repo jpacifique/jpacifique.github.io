@@ -51,6 +51,7 @@
 			
 			<div align="middle"><font color="grey" size="2">
 			$$img-alt%%
+			$$imgcredit%%
 			</font></div>
 
 
