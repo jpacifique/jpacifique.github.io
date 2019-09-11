@@ -7,7 +7,11 @@
 		<title> $$article-title%% </title>
 
 
-
+		<style> 
+			p    { text-indent: 30px;}
+			body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+			h1   { font-family: "Times New Roman", Times, serif; }
+		</style>
 	</head>
 
 	<body>
