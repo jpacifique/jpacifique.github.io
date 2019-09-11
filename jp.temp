@@ -69,7 +69,7 @@
 			$$href%%
 
 			<p>
-			<i> ~$$taken-from%%: $$source%%</i></p>
+			<i> $$taken-from%% $$source%%</i></p>
 
 		</div>
 
