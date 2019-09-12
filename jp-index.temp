@@ -1,0 +1,152 @@
+
+
+<html>
+
+	<head>
+		
+		<title> $$article-title%% </title>
+
+		<style>
+      
+	      img.grid {
+		width: 100%;
+		height: 10em;
+		object-fit: cover;
+		margin-top:0;
+		margin-left: auto;
+		margin-right: auto;
+	      }
+	      h3.headline {
+		margin-top:0px;
+	      	margin-bottom:0px;
+	      	text-align: center;
+	      }
+	      div.headlinemeta {
+	      	margin-top:0px;
+	      	text-align: center;
+	      }
+	      
+	      table.fixed { table-layout:fixed; white-space: nowrap; width: 100%}
+		  table.fixed td { overflow: hidden; }
+
+	    
+	      	
+		</style>
+
+
+	</head>
+
+	<body>
+		<div style="margin: 17px 500px 17px 500px; 
+		border: 1px solid #9b977b; 
+		background-color: #EEEEEE; 
+		padding: 8px 120px 17px 120px; 
+		font-size: 16px; 
+		text-align: justify;">
+		
+		<h1> <i> journal pacifique </i> </h1>
+		<i> $$jp-translation%% </i>
+		
+		</div>	
+
+		<div style="margin: 17px 500px 17px 500px; 
+		border: 1px solid #9b977b; 
+		background-color: #EEEEEE; 
+		padding: 8px 120px 17px 120px; 
+		font-size: 16px; 
+		text-align: justify;">
+		
+
+		<a href="/zh/index.html" style="color:black">$$home%%</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="/zh/archive.html"style="color:black">$$archive%%</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="/zh/about.html"style="color:black">$$about%%</a>
+
+		
+		</div>
+
+		<div style="margin: 17px 500px 17px 500px; 
+		border: 1px solid #9b977b; 
+		background-color: #EEEEEE; 
+		padding: 7px 120px 17px 120px; 
+		font-size: 16px; 
+		text-align: justify;">	
+
+			<p align="right">$$date%%</p>
+
+			<h2 align="left">$$latest-articles%%</h2>
+
+			<table  class="fixed" style="height: 28em;" width="100%">
+			  <tbody> 
+			    <tr class="fixed" style="height: 14em;">
+			      <td class="fixed" style="width: 33%;">
+				  <img class="gridded"  class="gridded" width="100%" src=
+				       "$$headline-img1%%"alt="" 
+				       /><h3 class="headline" style="align:center;">$$headline1%%</h3>
+			      	  <div class="headlinemeta">$$headlinemeta1%%</div>
+			      </td>
+			       <td class="fixed" style="width: 33%;">
+				  <img class="gridded"  width="100%" src=
+				       "$$headline-img2%%"alt="" 
+				       /><h3 class="headline" style="align:center;">$$headline2%%</h3>
+			      	  <div class="headlinemeta">$$headlinemeta2%%</div>
+			      </td>
+			      <td class="fixed" style="width: 33%;">
+				  <img class="gridded"  width="100%" src=
+				       "$$headline-img3%%"alt="" 
+				       /><h3 class="headline" style="align:center;">$$headline3%%</h3>
+			      	  <div class="headlinemeta">$$headlinemeta3%%</div>
+			      </td>
+			    </tr>
+			    <tr style="height: 14em;">
+			     <td class="fixed" style="width: 33%;">
+				  <img class="gridded"  width="100%" src=
+				       "$$headline-img4%%"alt="" 
+				       /><h3 class="headline" style="align:center;">$$headline4%%</h3>
+			      	  <div class="headlinemeta">$$headlinemeta4%%</div>
+			      </td>
+			       <td class="fixed" style="width: 33%;">
+				  <img class="gridded"  width="100%" src=
+				       "$$headline-img5%%"alt="" 
+				       /><h3 class="headline" style="align:center;">$$headline5%%</h3>
+			      	  <div class="headlinemeta">$$headlinemeta5%%</div>
+			      </td>
+			      <td class="fixed" style="width: 33%;">
+				  <img class="gridded"  width="100%" src=
+				       "$$headline-img6%%"alt="" 
+				       /><h3 class="headline" style="align:center;">$$headline6%%</h3>
+			      	  <div class="headlinemeta">$$headlinemeta6%%</div>
+			      </td>
+			      </td>
+			    </tr>
+			    <tr style="height: 14em;">
+			     <td class="fixed" style="width: 33%;">
+				  <img class="gridded"  width="100%" src=
+				       "$$headline-img7%%"alt="" 
+				       /><h3 class="headline" style="align:center;">$$headline7%%</h3>
+			      	  <div class="headlinemeta">$$headlinemeta8%%</div>
+			      </td>
+			       <td class="fixed" style="width: 33%;">
+				  <img class="gridded"  width="100%" src=
+				       "$$headline-img8%%"alt="" 
+				       /><h3 class="headline" style="align:center;">$$headline8%%</h3>
+			      	  <div class="headlinemeta">$$headlinemeta8%%</div>
+			      </td>
+			      <td class="fixed" style="width: 33%;">
+				  <img class="gridded"  width="100%" src=
+				       "$$headline-img9%%"alt="" 
+				       /><h3 class="headline" style="align:center;">$$headline9%%</h3>
+			      	  <div class="headlinemeta">$$headlinemeta9%%</div>
+			      </td>
+			      </td>
+			    </tr>
+			  </tbody>
+			</table>
+			
+
+			<p>$$homepage-text%%</p>
+
+
+		</div>
+
+	</body>
+
+
+</html>
