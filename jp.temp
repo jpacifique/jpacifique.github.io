@@ -35,7 +35,7 @@
 		text-align: justify;">
 		
 
-		<a href="/zh/index.html" style="color:black">$$home%%</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="/zh/archive.html"style="color:black">$$archive%%</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="/zh/about.html"style="color:black">$$about%%</a>
+		<a href="/$$target_language%%/index.html" style="color:black">$$home%%</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="/$$target_language%%/archive.html"style="color:black">$$archive%%</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="/$$target_language%%/about.html"style="color:black">$$about%%</a>
 
 		
 		</div>
