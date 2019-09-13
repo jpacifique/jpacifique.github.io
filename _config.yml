@@ -1,2 +1,6 @@
 theme: jekyll-theme-minimal
 future: true
+include: [/es]
+include: [/pt]
+include: [/pl]
+include: [/zh-CN]
