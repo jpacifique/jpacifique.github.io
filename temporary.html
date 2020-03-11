@@ -1,0 +1,80 @@
+
+
+<html>
+
+	<head>
+		
+		<title> $$article-title%% </title>
+
+
+		<style> 
+			p    { text-indent: 30px;}
+			body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+			h1   { font-family: "Times New Roman", Times, serif; }
+
+		div.bigbox {
+			width: 40em;
+	    		margin-left: auto;
+	    		margin-right: auto;
+			margin-top: 17px; 
+			margin-bottom: 17px;
+
+			border: 1px solid #9b977b; 
+			background-color: #EEEEEE; 
+			padding: 8px 3em 17px 3em; 
+			font-size: 16px; 
+			text-align: justify
+		      }
+		</style>
+	</head>
+
+	<body>
+		<div class="bigbox" >
+		
+
+		<h1> <i> journal pacifique </i> </h1>
+		<i> $$jp-translation%% </i>
+		
+		</div>	
+
+		<div class="bigbox" >
+		
+
+		<a href="/$$target-language%%/index.html" style="color:black">$$home%%</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="/$$target-language%%/archive.html"style="color:black">$$archive%%</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="/$$target-language%%/about.html"style="color:black">$$about%%</a>
+
+		
+		</div>
+
+		<div class="bigbox" >	
+
+			<p align="right">$$date%%</p>
+
+			<img src="$$img.jpg%%" style="border:1px solid black"
+			alt="$$img-alt%%" 
+			width="100%">
+			
+			<div align="middle"><font color="grey" size="2">
+			$$img-alt%%
+			$$imgcredit%%
+			</font></div>
+
+
+			<h2 align="right">$$article-title%%</h2>
+
+			<i>$$article-meta%%</i>
+
+			<!--\n-><p>;<p>\n<p>-></p>\n<p>;EOF-></p>EOF-->
+
+			$$article-text%%
+			$$href%%
+
+			<p>
+			<i> $$taken-from%% $$source%%</i></p>
+
+		</div>
+
+	</body>
+
+
+</html>
+

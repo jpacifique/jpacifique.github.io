@@ -3,31 +3,94 @@
 <html>
 
 	<head>
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147993030-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-147993030-1');
+		</script>
+
+		<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+		<link rel="manifest" href="site.webmanifest">
+		<link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+		<meta name="msapplication-TileColor" content="#ffc40d">
+		<meta name="theme-color" content="#ffffff">
+
 		
 		<title> 和平的报纸, journal pacifique </title>
 
 		<style>
-      
-	      img.grid {
-		width: 100%;
-		height: 10em;
-		object-fit: cover;
-		margin-top:0;
-		margin-left: auto;
-		margin-right: auto;
-	      }
-	      h3.headline {
-		margin-top:0px;
-	      	margin-bottom:0px;
-	      	text-align: center;
-	      }
-	      div.headlinemeta {
-	      	margin-top:0px;
-	      	text-align: center;
-	      }
-	      
-	      table.fixed { table-layout:fixed; white-space: nowrap; width: 100%}
-		  table.fixed td { overflow: hidden; }
+			h3   { color: #b1ffff }
+                        a    { color: white }
+			p    { text-indent: 30px;}
+                        div.bigbox { color: white;                                        background-color: #99ccff55 }
+			body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; background-attachment: fixed;;background-image: url("https://i.pinimg.com/originals/f6/3f/a4/f63fa4e529f94f82db2fb402d7a93c0d.jpg") }
+			h1   { font-family: "Times New Roman", Times, serif; }
+		img.gridded {
+			width: 100%;
+			height: 10em;
+			object-fit: cover;
+			margin-top:0;
+			margin-left: auto;
+			margin-right: auto;
+		}	
+		h3.headline {
+			vertical-align: top;		
+			margin-top:0px;
+	      		margin-bottom:auto;
+	      		text-align: center;
+		}
+		div.headlinemeta {
+	      		vertical-align: top;
+	      		text-align: center;
+			overflow-y: hidden
+		}
+		div.headline {
+			height:12em;
+		}
+		div.bigbox {
+			width: 40em;
+	    		margin-left: auto;
+	    		margin-right: auto;
+			margin-top: 17px; 
+			margin-bottom: 17px;
+
+			border: 1px solid #9b977b; 
+			padding: 8px 3em 17px 3em; 
+			font-size: 16px; 
+			text-align: justify
+		      }
+		table,td,th {
+			border:1px solid black;
+		}     	
+		
+		table.fixed { 
+			
+			table-layout:fixed;  
+			width: 100%
+		}
+		tr {	
+			height:21em;
+			vertical-align: top
+		}
+		table.fixed td {
+			text-overflow: ellipsis;
+			white-space: normal; 
+			overflow: hidden;
+			text-overflow: ellipsis;
+			margin-left: auto;
+	    		margin-right: auto;
+		}
+
+		
+		a.title { text-decoration: none }
+		a.articlelink { text-decoration: none }
 
 	    
 	      	
@@ -37,112 +100,97 @@
 	</head>
 
 	<body>
-		<div style="margin: 17px 500px 17px 500px; 
-		border: 1px solid #9b977b; 
-		background-color: #EEEEEE; 
-		padding: 8px 120px 17px 120px; 
-		font-size: 16px; 
-		text-align: justify;">
+		<div class="bigbox">
 		
-		<h1> <i> journal pacifique </i> </h1>
-		<i> 和平的报纸 </i>
-		
+		<h1><a class="title" href="../index.html"> <i> journal pacifique </i> </a></h1>
+		<i><a class="title" href="../index.html"> 和平的报纸 </a></i>
+
 		</div>	
 
-		<div style="margin: 17px 500px 17px 500px; 
-		border: 1px solid #9b977b; 
-		background-color: #EEEEEE; 
-		padding: 8px 120px 17px 120px; 
-		font-size: 16px; 
-		text-align: justify;">
+		<div class="bigbox">
 		
 
-		<a href="/zh-CN/index.html" style="color:black">主页</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="/zh-CN/archive.html"style="color:black">档案</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="/zh-CN/about.html"style="color:black">关于我们</a>
+		<a href="index.html">主页</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="archive.html">档案</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="about.html">关于我们</a>
 
 		
 		</div>
 
-		<div style="margin: 17px 500px 17px 500px; 
-		border: 1px solid #9b977b; 
-		background-color: #EEEEEE; 
-		padding: 7px 120px 17px 120px; 
-		font-size: 16px; 
-		text-align: justify;">	
+		<div class="bigbox">	
 
-			<p align="right">13/09/2019</p>
+			<p align="right">16/09/2019</p>
 
 			<h2 align="left">最新的文章</h2>
 
 			<table  class="fixed" style="height: 28em;" width="100%">
 			  <tbody> 
 			    <tr class="fixed" style="height: 14em;">
-			      <td class="fixed" style="width: 33%;">
+			      <td class="fixed" style="width: 33%;"><a class="articlelink" href="posts/2019-09-16/Sum-of-three-cubes-for-42-finally-solved----using-real-life-planetary-computer-zh-CN.html">
 				  <img class="gridded"  class="gridded" width="100%" src=
-				       "../dummy.jpeg"alt="" 
-				       /><h3 class="headline" style="align:center;">行星大小的金发姑娘区</h3>
-			      	  <div class="headlinemeta">研究人员描述了行星长时间保持表面液态水的新的较小尺寸限制，扩展了所谓的Habitable或'Goldilocks'区域，用于小型，低重力行星。这项研究扩大了宇宙生命的搜索范围，并揭示了小行星上大气演化的重要过程。
-</div>
+				       "../img/dummy11.jpeg"alt="" 
+				       /><div class="headline"><h3 class="headline" style="align:center;">42的三个立方体的总和终于解决了 - 使用现实生活中的行星计算机</h3>
+			      	  <div class="headlinemeta">热销紧接着33号的突破性“三维立方体”解决方案，数学家已经解决了最后一块65岁的着名数学拼图，答案中最难以捉摸的数字--42。
+</div></div></a>
 			      </td>
-			       <td class="fixed" style="width: 33%;">
+			       <td class="fixed" style="width: 33%;"><a class="articlelink" href="posts/2019-09-16/The-ever-winning-lottery-ticket--Mathematicians-solve-a-dusty-mystery-zh-CN.html">
 				  <img class="gridded"  width="100%" src=
-				       "https://www.sciencedaily.com/images/2019/09/190904125337_1_540x360.jpg"alt="" 
-				       /><h3 class="headline" style="align:center;">研究表明，雷克斯有一台空调，研究表明</h3>
-			      	  <div class="headlinemeta">霸王龙是地球上最大的食肉恐龙之一，其头部装有空调，这表明科学家们已经挑战了一个世纪以前信仰。
-</div>
+				       "../img/dummy6.jpeg"alt="" 
+				       /><div class="headline"><h3 class="headline" style="align:center;">获奖彩票：数学家解决了一个尘封的谜团</h3>
+			      	  <div class="headlinemeta">经过多年的努力，数学研究人员回答了一个神秘的半世纪之谜。在丹麦研究人员听到之前，这个谜团几乎被遗忘了，然后决定解决它。
+</div></div></a>
 			      </td>
-			      <td class="fixed" style="width: 33%;">
+			      <td class="fixed" style="width: 33%;"><a class="articlelink" href="posts/2019-09-16/Are-black-holes-made-of-dark-energy--zh-CN.html">
 				  <img class="gridded"  width="100%" src=
-				       "https://www.sciencedaily.com/images/2019/09/190910080021_1_540x360.jpg"alt="" 
-				       /><h3 class="headline" style="align:center;">新的飞行爬行动物物种是有史以来最大的飞行动物之一</h3>
-			      	  <div class="headlinemeta">根据一项新的研究，新发现的翼龙种类是有史以来最大的飞行动物之一。
-</div>
+				       "https://www.sciencedaily.com/images/2019/09/190910095419_1_540x360.jpg"alt="" 
+				       /><div class="headline"><h3 class="headline" style="align:center;">黑洞是由暗能量构成的吗？</h3>
+			      	  <div class="headlinemeta">研究人员已经确定并纠正了在应用爱因斯坦方程来模拟宇宙生长时所产生的微妙错误。
+</div></div></a>
 			      </td>
 			    </tr>
 			    <tr style="height: 14em;">
-			     <td class="fixed" style="width: 33%;">
-				  <img class="gridded"  width="100%" src=
-				       "https://www.sciencedaily.com/images/2019/09/190911121952_1_540x360.jpg"alt="" 
-				       /><h3 class="headline" style="align:center;">解决摩擦如何导致静电的长期谜团</h3>
-			      	  <div class="headlinemeta">科学家开发了一种新模型，该模型显示通过弯曲材料表面上的微小突起，将两个物体摩擦在一起会产生静电或摩擦电。
-</div>
-			      </td>
-			       <td class="fixed" style="width: 33%;">
-				  <img class="gridded"  width="100%" src=
-				       "https://www.sciencedaily.com/images/2019/08/190829115427_1_540x360.jpg"alt="" 
-				       /><h3 class="headline" style="align:center;">第一个人类祖先母乳喂养的时间比现代亲属长</h3>
-			      	  <div class="headlinemeta">通过分析我们一些最古老祖先的化石牙齿，科学家们发现，第一批人类比现代亲属更长时间地母乳喂养婴儿。
-</div>
-			      </td>
-			      <td class="fixed" style="width: 33%;">
-				  <img class="gridded"  width="100%" src=
-				       "../dummy.jpeg"alt="" 
-				       /><h3 class="headline" style="align:center;">需要一个“联合体”：研究人员开发代谢工程技术</h3>
-			      	  <div class="headlinemeta">多年来，科学家们一直在探索改变微生物细胞的方法，以改善生产多少产品，包括药品，燃料，甚至啤酒。但改变细胞内发生的遗传和调节过程带来了挑战。现在，生物工程师正在与一组研究人员合作设计微生物聚生体，其中细胞亚群被设计成一起工作以实现所需的功能。
-</div>
-			      </td>
-			      </td>
-			    </tr>
-			    <tr style="height: 14em;">
-			     <td class="fixed" style="width: 33%;">
-				  <img class="gridded"  width="100%" src=
-				       "https://www.sciencedaily.com/images/2019/09/190911142815_1_540x360.jpg"alt="" 
-				       /><h3 class="headline" style="align:center;">在银河系中心附近发现了高耸的气球状特征</h3>
-			      	  <div class="headlinemeta">莱斯大学建造的电催化反应器回收二氧化碳，利用电力生产纯液体燃料溶液。本发明背后的科学家们希望它能够成为一种有效且有利可图的方法来重复利用温室气体并使其远离大气层。
-</div>
-			      </td>
-			       <td class="fixed" style="width: 33%;">
+			     <td class="fixed" style="width: 33%;"><a class="articlelink" href="posts/2019-09-16/Reactor-turns-greenhouse-gas-into-pure-liquid-fuel-zh-CN.html">
 				  <img class="gridded"  width="100%" src=
 				       "https://www.sciencedaily.com/images/2019/09/190903084035_1_540x360.jpg"alt="" 
-				       /><h3 class="headline" style="align:center;">反应堆将温室气体转化为纯液体燃料</h3>
+				       /><div class="headline"><h3 class="headline" style="align:center;">反应堆将温室气体转化为纯液体燃料</h3>
 			      	  <div class="headlinemeta">莱斯大学建造的电催化反应器回收二氧化碳，利用电力生产纯液体燃料溶液。本发明背后的科学家们希望它能够成为一种有效且有利可图的方法来重复利用温室气体并使其远离大气层。
-</div>
+</div></div></a>
 			      </td>
-			      <td class="fixed" style="width: 33%;">
+			       <td class="fixed" style="width: 33%;"><a class="articlelink" href="posts/2019-09-16/Water-detected-on-an-exoplanet-located-in-its-star-s-habitable-zone-zh-CN.html">
 				  <img class="gridded"  width="100%" src=
-				       "../dummy.jpeg"alt="" 
-				       /><h3 class="headline" style="align:center;">在通往核钟的道路上的里程碑</h3>
-			      	  <div class="headlinemeta">几十年来，人们一直在寻找合适的原子核来构建超精确的核钟。长期以来，人们猜测特定的钍同位素必须具有适合于此目的的核态。这种长期寻求的核心钍状态现在已经首次通过实验证明 - 两次由两个不同的国际研究团队展示。
-</div>
+				       "https://www.sciencedaily.com/images/2019/09/190911121950_1_540x360.jpg"alt="" 
+				       /><div class="headline"><h3 class="headline" style="align:center;">在位于其恒星可居住区域的系外行星上探测到的水</h3>
+			      	  <div class="headlinemeta">天文学家在系外行星K2-18b上探测到水蒸气 - 这是寻找外星生命的重大发现。
+</div></div></a>
+			      </td>
+			      <td class="fixed" style="width: 33%;"><a class="articlelink" href="posts/2019-09-16/Black-hole-at-the-center-of-our-galaxy-appears-to-be-getting-hungrier-zh-CN.html">
+				  <img class="gridded"  width="100%" src=
+				       "../img/dummy3.jpeg"alt="" 
+				       /><div class="headline"><h3 class="headline" style="align:center;">我们银河系中心的黑洞似乎变得越来越饥饿</h3>
+			      	  <div class="headlinemeta">我们银河系中心的巨大黑洞正在吃一顿异常大的食物，研究人员不知道为什么。 “我们在研究超大质量黑洞的24年里从未见过这样的事情，”一位物理学和天文学教授说。
+</div></div></a>
+			      </td>
+			      </td>
+			    </tr>
+			    <tr style="height: 14em;">
+			     <td class="fixed" style="width: 33%;"><a class="articlelink" href="posts/2019-09-16/Towering-balloon-like-features-discovered-near-center-of-Milky-Way-zh-CN.html">
+				  <img class="gridded"  width="100%" src=
+				       "https://www.sciencedaily.com/images/2019/09/190911142815_1_540x360.jpg"alt="" 
+				       /><div class="headline"><h3 class="headline" style="align:center;">在银河系中心附近发现了高耸的气球状特征</h3>
+			      	  <div class="headlinemeta">天文学家发现了银河系中心观测到的最大特征之一：一对巨大的无线电发射气泡，高达数百光年以上在我们银河系的中心区域之下。
+</div></div></a>
+			      </td>
+			       <td class="fixed" style="width: 33%;"><a class="articlelink" href="posts/2019-09-16/A-smart-artificial-hand-for-amputees-merges-user-and-robotic-control-zh-CN.html">
+				  <img class="gridded"  width="100%" src=
+				       "../img/dummy0.jpeg"alt="" 
+				       /><div class="headline"><h3 class="headline" style="align:center;">用于截肢者的智能人工手将用户和机器人控制融合在一起</h3>
+			      	  <div class="headlinemeta">科学家已成功测试了新的神经假体技术，该技术将机器人控制与用户的自愿控制相结合，为神经假体技术共享控制的新跨学科领域开辟了道路。
+</div></div></a>
+			      </td>
+			      <td class="fixed" style="width: 33%;"><a class="articlelink" href="posts/2019-09-16/Scientists-detect-the-ringing-of-a-newborn-black-hole-for-the-first-time-zh-CN.html">
+				  <img class="gridded"  width="100%" src=
+				       "../img/dummy13.jpeg"alt="" 
+				       /><div class="headline"><h3 class="headline" style="align:center;">科学家们第一次发现了新生黑洞的响声</h3>
+			      	  <div class="headlinemeta">物理学家第一次“听到”了婴儿黑洞的响声，并发现这种响铃的模式确实预示着黑色洞的质量和旋转 - 更多证据表明爱因斯坦一直都是正确的。
+</div></div></a>
 			      </td>
 			      </td>
 			    </tr>
@@ -150,7 +198,7 @@
 			</table>
 			
 
-			<p>欢迎来到宁静的报纸，那里有地毯和纪念品。</p>
+			<p>欢迎来到Journal Pacifique。 我们为您提供有关科学和技术的最新文章。 Journal Pacifique致力于以英语以外的语言分发流行的科学研究。</p>
 
 
 		</div>

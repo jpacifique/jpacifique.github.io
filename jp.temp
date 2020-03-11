@@ -3,50 +3,72 @@
 <html>
 
 	<head>
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147993030-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-147993030-1');
+		</script>
+
+		<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+		<link rel="manifest" href="site.webmanifest">
+		<link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+		<meta name="msapplication-TileColor" content="#ffc40d">
+		<meta name="theme-color" content="#ffffff">
+
 		
 		<title> $$article-title%% </title>
 
 
 		<style> 
+			h3   { color: #b1ffff }
+                        a    { color: white }
 			p    { text-indent: 30px;}
-			body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+                        div.bigbox { color: white;                                        background-color: #99ccff55 }
+			body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; background-attachment: fixed;;background-image: url("https://i.pinimg.com/originals/f6/3f/a4/f63fa4e529f94f82db2fb402d7a93c0d.jpg") }
 			h1   { font-family: "Times New Roman", Times, serif; }
+
+		div.bigbox {
+			width: 40em;
+	    		margin-left: auto;
+	    		margin-right: auto;
+			margin-top: 17px; 
+			margin-bottom: 17px;
+
+			border: 1px solid #9b977b;  
+			padding: 8px 3em 17px 3em; 
+			font-size: 16px; 
+			text-align: justify
+		      }
+		
+		a.title {text-decoration: none}
 		</style>
 	</head>
 
 	<body>
-		<div style="margin: 17px 500px 17px 500px; 
-		border: 1px solid #9b977b; 
-		background-color: #EEEEEE; 
-		padding: 8px 120px 17px 120px; 
-		font-size: 16px; 
-		text-align: justify;">
+		<div class="bigbox" >
 		
 
-		<h1> <i> journal pacifique </i> </h1>
-		<i> $$jp-translation%% </i>
+		<h1><a class="title" href="../../../index.html"> <i> journal pacifique </i> </a></h1>
+		<i><a class="title" href="../../../index.html"> $$jp-translation%% </a></i>
 		
 		</div>	
 
-		<div style="margin: 17px 500px 17px 500px; 
-		border: 1px solid #9b977b; 
-		background-color: #EEEEEE; 
-		padding: 8px 120px 17px 120px; 
-		font-size: 16px; 
-		text-align: justify;">
+		<div class="bigbox" >
 		
 
-		<a href="/$$target-language%%/index.html" style="color:black">$$home%%</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="/$$target-language%%/archive.html"style="color:black">$$archive%%</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="/$$target-language%%/about.html"style="color:black">$$about%%</a>
+		<a href="../../index.html">$$home%%</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../../archive.html">$$archive%%</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="../../about.html">$$about%%</a>
 
 		
 		</div>
 
-		<div style="margin: 17px 500px 17px 500px; 
-		border: 1px solid #9b977b; 
-		background-color: #EEEEEE; 
-		padding: 7px 120px 17px 120px; 
-		font-size: 16px; 
-		text-align: justify;">	
+		<div class="bigbox" >	
 
 			<p align="right">$$date%%</p>
 
