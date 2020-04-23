@@ -44,7 +44,7 @@
 # 
 # 
 
-# In[73]:
+# In[1]:
 
 
 #for colab
@@ -54,7 +54,7 @@
 ## Character limit: 15K
 
 
-# In[74]:
+# In[2]:
 
 
 #import os
@@ -62,7 +62,7 @@
 #os.system(cmd)
 
 
-# In[75]:
+# In[3]:
 
 
 from googletrans import Translator
@@ -71,7 +71,7 @@ import re
 translator = Translator()
 
 
-# In[76]:
+# In[4]:
 
 
 def find_between( s, first, last ):
@@ -83,14 +83,14 @@ def find_between( s, first, last ):
         return ""
 
 
-# In[77]:
+# In[5]:
 
 
 def string_strip(s):
     return re.sub(r"[^A-Za-z0-9]", "-", s)
 
 
-# In[78]:
+# In[6]:
 
 
 from urllib.request import Request, urlopen
@@ -173,7 +173,7 @@ def sciencedaily_parse_article(url):
   
 
 
-# In[79]:
+# In[7]:
 
 
 def get_translation(article_dictionary,target_language):
@@ -215,7 +215,7 @@ def get_translation(article_dictionary,target_language):
     return translations
 
 
-# In[80]:
+# In[8]:
 
 
 ("# deprecated")
@@ -228,7 +228,7 @@ def get_language_dictionary(target_language):
     return ld
 
 
-# In[81]:
+# In[9]:
 
 
 def html_from_dictionary(translated_dictionary, target_language, language_dictionary): # translated & language could be just one dictionary this was stupid.
@@ -237,7 +237,7 @@ def html_from_dictionary(translated_dictionary, target_language, language_dictio
     hoy  = date.today()
     d1   = hoy.strftime("%d/%m/%Y")
   
-    html = open(SUBFOLDER + "jp.temp").read()
+    html = open(SUBFOLDER + "templates/jp.temp").read()
 
     article_text = re.sub(r"\n\n", "</p>\n\n<p>",   translated_dictionary["article"])
     html_article = "<p>" + article_text + "</p>"
@@ -275,7 +275,7 @@ def html_from_dictionary(translated_dictionary, target_language, language_dictio
   
 
 
-# In[82]:
+# In[10]:
 
 
 def getnewpath(translated_dict):
@@ -306,13 +306,13 @@ def getnewpath(translated_dict):
     return [newheadline,newpathaddr,urlheadline]
 
 
-# In[83]:
+# In[11]:
 
 
 SUBFOLDER = ""
 
 
-# In[84]:
+# In[12]:
 
 
 import pickle
@@ -326,7 +326,7 @@ def load_obj(name ):
         return pickle.load(f)
 
 
-# In[85]:
+# In[13]:
 
 
 def dic_to_dirfile(dic,target_language, elements_dictionary):
@@ -351,7 +351,7 @@ def dic_to_dirfile(dic,target_language, elements_dictionary):
     return [htmlx,tr_di,newdirs[2],newdirs[0]]
 
 
-# In[86]:
+# In[14]:
 
 
 def targdic_to_dirfile(tr_di,target_language, elements_dictionary):
@@ -372,7 +372,7 @@ def targdic_to_dirfile(tr_di,target_language, elements_dictionary):
     return [htmlx,tr_di,newdirs[2],newdirs[0]]
 
 
-# In[87]:
+# In[15]:
 
 
 elements_dictionary = {
@@ -451,7 +451,7 @@ elements_dictionary = {
 }
 
 
-# In[88]:
+# In[16]:
 
 
 def url_to_dirfile(url,target_language):
@@ -463,7 +463,7 @@ def url_to_dirfile(url,target_language):
     return [htmlx,ar_di]
 
 
-# In[89]:
+# In[17]:
 
 
 def get_article_urls_sd():
@@ -485,7 +485,7 @@ def get_article_urls_sd():
     return links
 
 
-# In[90]:
+# In[18]:
 
 
 articles = get_article_urls_sd()
@@ -494,13 +494,13 @@ languages = ["es", "pt", "pl", "zh-CN", "de", "af"]
 #languages = ["de", "af"]
 
 
-# In[91]:
+# In[19]:
 
 
 articles
 
 
-# In[92]:
+# In[20]:
 
 
 #headlinessofar = []
@@ -508,7 +508,7 @@ articles
 #articleurlssofar = []
 
 
-# In[93]:
+# In[21]:
 
 
 headlinessofar = load_obj("headlinessofar")
@@ -516,7 +516,7 @@ articlessofar = load_obj("articlessofar")
 articleurlssofar =load_obj("articleurlssofar")
 
 
-# In[94]:
+# In[22]:
 
 
 articlessofar
@@ -528,7 +528,7 @@ articlessofar
 
 
 
-# In[95]:
+# In[23]:
 
 
 #refresh already saved articles' html
@@ -539,7 +539,7 @@ for article in articlessofar:
     tmp = targdic_to_dirfile(articlessofar[article], articlessofar[article]["lang"], elements_dictionary)
 
 
-# In[96]:
+# In[24]:
 
 
 import time
@@ -558,7 +558,7 @@ for article in articles:
         
 
 
-# In[104]:
+# In[25]:
 
 
 save_obj(headlinessofar,     "headlinessofar")
@@ -566,7 +566,14 @@ save_obj(articlessofar,       "articlessofar")
 save_obj(articleurlssofar, "articleurlssofar")
 
 
-# In[98]:
+# In[26]:
+
+
+def img_thumb_url(key):
+    return re.sub("img/", "img/thumbnails/", articlessofar[key]["imgaddr"])
+
+
+# In[27]:
 
 
 #get most recent 9 articles and get their "keys"
@@ -575,7 +582,7 @@ def form_index(target_language):
   
     homepage_text="welcome my friend we have carpets."
  
-    html = open(SUBFOLDER + "jp-index.temp").read()
+    html = open(SUBFOLDER + "templates/jp-index.temp").read()
     
     from datetime import date
     hoy  = date.today()
@@ -604,9 +611,9 @@ def form_index(target_language):
     writenum = min(len(asfl),9)
     
     for i in range (writenum):
-        j = writenum-i
+        j = writenum-i-1
         
-        key = asfl[i]
+        key = asfl[j]
     
         html = re.sub(r"\$\$article-link"+repr(j)+"%%",   articlessofar[key]["pathfromlang"][1:],           html)
         print(articlessofar[key]["pathfromlang"])
@@ -615,8 +622,9 @@ def form_index(target_language):
         if(articlessofar[key]["imgaddr"][:2]!=".."):
             html = re.sub(r"\$\$headline-img"+repr(j)+"%%",      articlessofar[key]["imgaddr"],         html)
         else:
-            html = re.sub(r"\$\$headline-img"+repr(j)+"%%",      articlessofar[key]["imgaddr"][6:],              html)
-    
+            #html = re.sub(r"\$\$headline-img"+repr(j)+"%%",      articlessofar[key]["imgaddr"][6:],              html)
+            html = re.sub(r"\$\$headline-img"+repr(j)+"%%",      img_thumb_url(key)[6:],              html)
+            
     return html
 
 
@@ -636,14 +644,20 @@ def refresh_indices():
         f.write(htmlx)
 
 
-# In[99]:
+# In[ ]:
+
+
+
+
+
+# In[28]:
 
 
 #get most recent 9 articles and get their "keys"
 
 def form_archive(target_language):
  
-    html = open(SUBFOLDER + "jp-archive.temp").read()
+    html = open(SUBFOLDER + "templates/jp-archive.temp").read()
     
     from datetime import date
     hoy  = date.today()
@@ -669,9 +683,9 @@ def form_archive(target_language):
     archive_text = ""
     
     for i in range (writenum):
-        j = writenum-i
+        j = writenum-i-1
         
-        key = asfl[i]
+        key = asfl[j]
         
         link = articlessofar[key]["pathfromlang"][1:]
         titl = articlessofar[key]["headline"]
@@ -703,14 +717,14 @@ def refresh_archives():
         f.write(htmlx)
 
 
-# In[100]:
+# In[29]:
 
 
 #get most recent 9 articles and get their "keys"
 
 def form_about(target_language):
  
-    html = open(SUBFOLDER + "jp-about.temp").read()
+    html = open(SUBFOLDER + "templates/jp-about.temp").read()
 
     html = re.sub(r"\$\$home%%",           elements_dictionary["homepage-"+target_language],           html)
     html = re.sub(r"\$\$archive%%",        elements_dictionary["archive-"+target_language],            html)
@@ -747,19 +761,19 @@ def refresh_abouts():
 
 
 
-# In[101]:
+# In[30]:
 
 
 refresh_archives()
 
 
-# In[102]:
+# In[31]:
 
 
 refresh_abouts()
 
 
-# In[103]:
+# In[32]:
 
 
 refresh_indices()

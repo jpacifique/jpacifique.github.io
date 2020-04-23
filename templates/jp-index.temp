@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+
+<html lang="$$target-language%%">
+
+	<head>
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147993030-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-147993030-1');
+		</script>
+
+		<link rel="ico/apple-touch-icon" sizes="180x180" href="../ico/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="../ico/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="../ico/favicon-16x16.png">
+		<link rel="manifest" href="site.webmanifest">
+		<link rel="mask-icon" href="../ico/safari-pinned-tab.svg" color="#5bbad5">
+		<meta name="msapplication-TileColor" content="#ffc40d">
+		<meta name="theme-color" content="#ffffff">
+
+		
+		<title> $$jp-translation%%, journal pacifique </title>
+
+		<style>
+		      h3   { color: black }
+		      a    { color: black }
+		      p    { text-indent: 30px;}
+		      div.bigbox { color: black;                                        background-color: #eeeeeeaa }
+		      body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; background-attachment: fixed;background-image: url("../img/bg.jpeg") }
+		      h1   { font-family: "Times New Roman", Times, serif; }
+		img.gridded {
+			width: 100%;
+			height: 10em;
+			object-fit: cover;
+			margin-top:0;
+			margin-left: auto;
+			margin-right: auto;
+		}	
+		h3.headline {
+			vertical-align: top;		
+			margin-top:0px;
+	      		margin-bottom:auto;
+	      		text-align: center;
+		}
+		div.headlinemeta {
+	      		vertical-align: top;
+	      		text-align: center;
+			overflow-y: hidden
+		}
+		div.headline {
+
+		}
+		div.bigbox {
+			width: 40em;
+	    		margin-left: auto;
+	    		margin-right: auto;
+			margin-top: 17px; 
+			margin-bottom: 17px;
+
+			border: 1px solid #9b977b; 
+			padding: 8px 3em 17px 3em; 
+			font-size: 16px; 
+			text-align: justify
+		      }
+		table,tr,td {
+			background: #00000005;
+			border-radius: 1em;
+			border-spacing: 1em;
+		}  
+
+		
+		table.fixed { 
+			
+			table-layout:fixed;  
+			width: 100%
+		}
+		tr {	
+
+			vertical-align: top
+		}
+		table.fixed td {
+			text-overflow: ellipsis;
+			white-space: normal; 
+			overflow: hidden;
+			text-overflow: ellipsis;
+			margin-left: auto;
+	    		margin-right: auto;
+		}
+
+		
+		a.title { text-decoration: none }
+		a.articlelink { text-decoration: none }
+
+	    
+	      	
+		</style>
+
+
+	</head>
+
+	<body>
+		<div class="bigbox">
+		
+		<h1><a class="title" href="../index.html"> <i> journal pacifique </i> </a></h1>
+		<i><a class="title" href="../index.html"> $$jp-translation%% </a></i>
+
+		</div>	
+
+		<div class="bigbox">
+		
+
+		<a href="index.html">$$home%%</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="archive.html">$$archive%%</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="about.html">$$about%%</a>
+
+		
+		</div>
+
+		<div class="bigbox">	
+
+			<p align="right">$$date%%</p>
+
+			<h2 align="left">$$latest-articles%%</h2>
+
+			<table  class="fixed"" width="100%">
+			  <tbody> 
+			    <tr class="fixed">
+			      <td class="fixed" style="width: 33%;"><a class="articlelink" href="$$article-link1%%">
+				  <img class="gridded"  class="gridded" width="100%" src=
+				       "$$headline-img1%%"alt="" 
+				       /><div class="headline"><h3 class="headline" style="align:center;">$$headline1%%</h3>
+			      	  </div></a>
+			      </td>
+			       <td class="fixed" style="width: 33%;"><a class="articlelink" href="$$article-link2%%">
+				  <img class="gridded"  width="100%" src=
+				       "$$headline-img2%%"alt="" 
+				       /><div class="headline"><h3 class="headline" style="align:center;">$$headline2%%</h3>
+			      	  </div></a>
+			      </td>
+			      <td class="fixed" style="width: 33%;"><a class="articlelink" href="$$article-link3%%">
+				  <img class="gridded"  width="100%" src=
+				       "$$headline-img3%%"alt="" 
+				       /><div class="headline"><h3 class="headline" style="align:center;">$$headline3%%</h3>
+			      	  </div></a>
+			      </td>
+			    </tr>
+			    <tr>
+			     <td class="fixed" style="width: 33%;"><a class="articlelink" href="$$article-link4%%">
+				  <img class="gridded"  width="100%" src=
+				       "$$headline-img4%%"alt="" 
+				       /><div class="headline"><h3 class="headline" style="align:center;">$$headline4%%</h3>
+			      	  </div></a>
+			      </td>
+			       <td class="fixed" style="width: 33%;"><a class="articlelink" href="$$article-link5%%">
+				  <img class="gridded"  width="100%" src=
+				       "$$headline-img5%%"alt="" 
+				       /><div class="headline"><h3 class="headline" style="align:center;">$$headline5%%</h3>
+			      	  </div></a>
+			      </td>
+			      <td class="fixed" style="width: 33%;"><a class="articlelink" href="$$article-link6%%">
+				  <img class="gridded"  width="100%" src=
+				       "$$headline-img6%%"alt="" 
+				       /><div class="headline"><h3 class="headline" style="align:center;">$$headline6%%</h3>
+			      	  </div></a>
+			      </td>
+			      </td>
+			    </tr>
+			    <tr>
+			     <td class="fixed" style="width: 33%;"><a class="articlelink" href="$$article-link7%%">
+				  <img class="gridded"  width="100%" src=
+				       "$$headline-img7%%"alt="" 
+				       /><div class="headline"><h3 class="headline" style="align:center;">$$headline7%%</h3>
+			      	  </div></a>
+			      </td>
+			       <td class="fixed" style="width: 33%;"><a class="articlelink" href="$$article-link8%%">
+				  <img class="gridded"  width="100%" src=
+				       "$$headline-img8%%"alt="" 
+				       /><div class="headline"><h3 class="headline" style="align:center;">$$headline8%%</h3>
+			      	  </div></a>
+			      </td>
+			      <td class="fixed" style="width: 33%;"><a class="articlelink" href="$$article-link9%%">
+				  <img class="gridded"  width="100%" src=
+				       "$$headline-img9%%"alt="" 
+				       /><div class="headline"><h3 class="headline" style="align:center;">$$headline9%%</h3>
+			      	  </div></a>
+			      </td>
+			      </td>
+			    </tr>
+			  </tbody>
+			</table>
+			
+			<br>
+			<div style="text-align:center; width:100%;">
+				<a style="font-size:1.5em;" href="archive.html">$$see-more%%</a>
+			</div>
+			
+
+			<p>$$homepage-text%%</p>
+
+
+		</div>
+
+	</body>
+
+
+</html>
