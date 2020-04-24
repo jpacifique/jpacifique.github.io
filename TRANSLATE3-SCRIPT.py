@@ -518,21 +518,26 @@ def url_to_dirfile(url,target_language):
 # In[19]:
 
 
+import re
+
 def get_article_urls_sd():
 
-    main = "https://www.sciencedaily.com/news/top/technology/"
+    main = "https://www.sciencedaily.com"#/news/top/technology/"
     req = Request(main, headers={'User-Agent': 'Mozilla/5.0'})
     webpage = urlopen(req).read()
     main_html = webpage.decode("utf-8") 
     
     links = []
     
-    headline  = find_between(main_html, '<h5 class="clearfix"><a href="','">')
+    #headline  = find_between(main_html, '<h5 class="clearfix"><a href="','">')
+    headline  = re.findall(r"/releases.*?\.htm", main_html)[0] #(main_html, '<h5 class="clearfix"><a href="','">')
     
-    for i in range(12):
+    while True:
         main_html = main_html[main_html.index(headline)+len(headline):]
         links.append("https://www.sciencedaily.com"+headline)
         headline  = find_between(main_html, '<h5 class="clearfix"><a href="','">')
+        if headline == "":
+            break
 
     return links
 
@@ -605,7 +610,9 @@ for article in articles:
                 tmp = dic_to_dirfile(dic,target_language, elements_dictionary)
                 articlessofar[tmp[2]]=tmp[1]
             except KeyError:
-                url_to_dirfile(article, target_language)
+                    url_to_dirfile(article, target_language)
+            except:
+                    print("ERROR__________________________________________________")
         articleurlssofar.append(article)
         
 
@@ -669,8 +676,8 @@ def form_index(target_language):
     
     for i in range (writenum):
         j = writenum-i-1
-        
-        key = asfl[j]
+        #j=i+1
+        key = asfl[i]
     
         html = re.sub(r"\$\$article-link"+repr(j)+"%%",   articlessofar[key]["pathfromlang"][1:],           html)
         print(articlessofar[key]["pathfromlang"])
