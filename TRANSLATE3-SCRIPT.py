@@ -65,13 +65,21 @@
 # In[3]:
 
 
+from datetime import date
+hoy  = date.today()
+d1   = hoy.strftime("%d/%m/%Y")
+
+
+# In[4]:
+
+
 from googletrans import Translator
 import re
 
 translator = Translator()
 
 
-# In[4]:
+# In[5]:
 
 
 def find_between( s, first, last ):
@@ -83,14 +91,14 @@ def find_between( s, first, last ):
         return ""
 
 
-# In[5]:
+# In[6]:
 
 
 def string_strip(s):
     return re.sub(r"[^A-Za-z0-9]", "-", s)
 
 
-# In[6]:
+# In[7]:
 
 
 from urllib.request import Request, urlopen
@@ -173,7 +181,7 @@ def sciencedaily_parse_article(url):
   
 
 
-# In[7]:
+# In[8]:
 
 
 def get_translation(article_dictionary,target_language):
@@ -198,9 +206,6 @@ def get_translation(article_dictionary,target_language):
     big_translated_string = translator.translate(big_string,dest=target_language).text
     
     translations_array    = big_translated_string.split(token_out)
-   
-    #print(big_translated_string)
-    #print(len(translations_array),translations_array)
     
     for i in range (4):
         translations[keys[i]]=translations_array[i]
@@ -215,7 +220,7 @@ def get_translation(article_dictionary,target_language):
     return translations
 
 
-# In[8]:
+# In[9]:
 
 
 ("# deprecated")
@@ -228,7 +233,17 @@ def get_language_dictionary(target_language):
     return ld
 
 
-# In[9]:
+# In[10]:
+
+
+slogans = [
+    "Wissenschaft für alle, überall.",
+    "科学无处不在，无处不在。",
+    "Ciencia para todos, en todas partes.",
+]
+
+
+# In[11]:
 
 
 def html_from_dictionary(translated_dictionary, target_language, language_dictionary): # translated & language could be just one dictionary this was stupid.
@@ -237,7 +252,7 @@ def html_from_dictionary(translated_dictionary, target_language, language_dictio
     hoy  = date.today()
     d1   = hoy.strftime("%d/%m/%Y")
   
-    html = open(SUBFOLDER + "templates/jp.temp").read()
+    html = open(SUBFOLDER + "templates/details.html").read()
 
     article_text = re.sub(r"\n\n", "</p>\n\n<p>",   translated_dictionary["article"])
     html_article = "<p>" + article_text + "</p>"
@@ -259,6 +274,19 @@ def html_from_dictionary(translated_dictionary, target_language, language_dictio
     html = re.sub(r"\$\$about%%",          language_dictionary["about us-"+target_language],           html)
     html = re.sub(r"\$\$jp-translation%%", language_dictionary["journal pacifique-"+target_language],  html)
     html = re.sub(r"\$\$taken-from%%",     language_dictionary["source:-"+target_language],            html)
+    
+    html = re.sub(r"\$\$author-name%%",    language_dictionary["author-name-"+target_language],          html)
+    html = re.sub(r"\$\$author-img-url%%",    language_dictionary["author-img-"+target_language],        html)
+    html = re.sub(r"\$\$author-description%%",    language_dictionary["author-desc-"+target_language],   html)
+    
+    
+    html = re.sub(r"\$\$slogan1%%",       slogans[0],    html)
+    html = re.sub(r"\$\$slogan2%%",       slogans[1],    html)
+    html = re.sub(r"\$\$slogan3%%",       slogans[2],    html)
+    
+    
+    html = re.sub(r"\$\$homepage-text%%",  elements_dictionary["hometext-"+target_language],    html)
+    
     html = re.sub(r"\$\$target-language%%",     target_language,            html)
   
     html = re.sub(r"\$\$imgcredit%%",       translated_dictionary["imgcredit"],          html)
@@ -275,7 +303,7 @@ def html_from_dictionary(translated_dictionary, target_language, language_dictio
   
 
 
-# In[10]:
+# In[12]:
 
 
 def getnewpath(translated_dict):
@@ -306,13 +334,13 @@ def getnewpath(translated_dict):
     return [newheadline,newpathaddr,urlheadline]
 
 
-# In[11]:
+# In[13]:
 
 
 SUBFOLDER = ""
 
 
-# In[12]:
+# In[14]:
 
 
 import pickle
@@ -326,7 +354,7 @@ def load_obj(name ):
         return pickle.load(f)
 
 
-# In[13]:
+# In[15]:
 
 
 def dic_to_dirfile(dic,target_language, elements_dictionary):
@@ -351,7 +379,7 @@ def dic_to_dirfile(dic,target_language, elements_dictionary):
     return [htmlx,tr_di,newdirs[2],newdirs[0]]
 
 
-# In[14]:
+# In[16]:
 
 
 def targdic_to_dirfile(tr_di,target_language, elements_dictionary):
@@ -372,7 +400,7 @@ def targdic_to_dirfile(tr_di,target_language, elements_dictionary):
     return [htmlx,tr_di,newdirs[2],newdirs[0]]
 
 
-# In[15]:
+# In[17]:
 
 
 elements_dictionary = {
@@ -447,11 +475,35 @@ elements_dictionary = {
     "see-more-zh-CN":"看更多",
     "see-more-tr":"Daha fazla",
     "see-more-de":"Mehr sehen",
-    "see-more-af":"Sien meer"
+    "see-more-af":"Sien meer",
+    
+    "author-name-es":"Edgardo Terrazas",
+    "author-name-pt":"Dário Aguiar",
+    "author-name-pl":"Julia Wojnicz",
+    "author-name-zh-CN":"Adrian Ng",
+    "author-name-tr":"Aygün İncesu",
+    "author-name-de":"Kai Schulte",
+    "author-name-af":"Imka Friedrich",
+    
+    "author-desc-es":"Traductor español - inglés en Journal Pacifique",
+    "author-desc-pt":"Tradutora de português - inglês no Journal Pacifique",
+    "author-desc-pl":"Tłumacz polsko - angielski w Journal Pacifique",
+    "author-desc-zh-CN":"Journal Pacifique的中英文翻译",
+    "author-desc-tr":"Journal Pacifique'te Türkçe - İngilizce çevirmen",
+    "author-desc-de":"Deutsch - Englisch Übersetzer bei Journal Pacifique",
+    "author-desc-af":"Afrikaans - Engelse vertaler by Journal Pacifique",
+    
+    "author-img-es":"https://avataaars.io/?avatarStyle=Circle&topType=LongHairCurly&accessoriesType=Blank&hairColor=SilverGray&facialHairType=BeardLight&facialHairColor=Brown&clotheType=GraphicShirt&clotheColor=PastelGreen&graphicType=Diamond&eyeType=WinkWacky&eyebrowType=FlatNatural&mouthType=Disbelief&skinColor=Light",
+    "author-img-pt":"https://avataaars.io/?avatarStyle=Circle&topType=WinterHat4&accessoriesType=Blank&hatColor=Red&facialHairType=BeardMedium&facialHairColor=Brown&clotheType=ShirtCrewNeck&clotheColor=Heather&eyeType=Surprised&eyebrowType=DefaultNatural&mouthType=Disbelief&skinColor=Light",
+    "author-img-pl":"https://avataaars.io/?avatarStyle=Circle&topType=LongHairBun&accessoriesType=Blank&hairColor=BlondeGolden&facialHairType=Blank&clotheType=ShirtScoopNeck&clotheColor=Pink&eyeType=Cry&eyebrowType=UpDownNatural&mouthType=Serious&skinColor=Pale",
+    "author-img-zh-CN":"https://avataaars.io/?avatarStyle=Circle&topType=LongHairNotTooLong&accessoriesType=Kurt&hairColor=Black&facialHairType=Blank&clotheType=BlazerSweater&eyeType=Cry&eyebrowType=Default&mouthType=Smile&skinColor=Light",
+    "author-img-tr":"https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShaggyMullet&accessoriesType=Prescription02&hairColor=BrownDark&facialHairType=Blank&clotheType=ShirtScoopNeck&clotheColor=White&eyeType=Close&eyebrowType=FlatNatural&mouthType=Default&skinColor=Light",
+    "author-img-de":"https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraightStrand&accessoriesType=Sunglasses&hairColor=BlondeGolden&facialHairType=MoustacheFancy&facialHairColor=Brown&clotheType=BlazerSweater&eyeType=Happy&eyebrowType=AngryNatural&mouthType=Twinkle&skinColor=Light",
+    "author-img-af":"https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight2&accessoriesType=Round&hairColor=PastelPink&facialHairType=Blank&clotheType=ShirtVNeck&clotheColor=Gray01&eyeType=Default&eyebrowType=UpDownNatural&mouthType=Disbelief&skinColor=Black",
 }
 
 
-# In[16]:
+# In[18]:
 
 
 def url_to_dirfile(url,target_language):
@@ -463,7 +515,7 @@ def url_to_dirfile(url,target_language):
     return [htmlx,ar_di]
 
 
-# In[17]:
+# In[19]:
 
 
 def get_article_urls_sd():
@@ -485,7 +537,7 @@ def get_article_urls_sd():
     return links
 
 
-# In[18]:
+# In[20]:
 
 
 articles = get_article_urls_sd()
@@ -494,13 +546,13 @@ languages = ["es", "pt", "pl", "zh-CN", "de", "af"]
 #languages = ["de", "af"]
 
 
-# In[19]:
+# In[21]:
 
 
 articles
 
 
-# In[20]:
+# In[22]:
 
 
 #headlinessofar = []
@@ -508,7 +560,7 @@ articles
 #articleurlssofar = []
 
 
-# In[21]:
+# In[23]:
 
 
 headlinessofar = load_obj("headlinessofar")
@@ -516,7 +568,7 @@ articlessofar = load_obj("articlessofar")
 articleurlssofar =load_obj("articleurlssofar")
 
 
-# In[22]:
+# In[24]:
 
 
 articlessofar
@@ -528,7 +580,7 @@ articlessofar
 
 
 
-# In[23]:
+# In[25]:
 
 
 #refresh already saved articles' html
@@ -539,7 +591,7 @@ for article in articlessofar:
     tmp = targdic_to_dirfile(articlessofar[article], articlessofar[article]["lang"], elements_dictionary)
 
 
-# In[24]:
+# In[26]:
 
 
 import time
@@ -558,7 +610,7 @@ for article in articles:
         
 
 
-# In[25]:
+# In[27]:
 
 
 save_obj(headlinessofar,     "headlinessofar")
@@ -566,14 +618,14 @@ save_obj(articlessofar,       "articlessofar")
 save_obj(articleurlssofar, "articleurlssofar")
 
 
-# In[26]:
+# In[28]:
 
 
 def img_thumb_url(key):
     return re.sub("img/", "img/thumbnails/", articlessofar[key]["imgaddr"])
 
 
-# In[27]:
+# In[29]:
 
 
 #get most recent 9 articles and get their "keys"
@@ -582,7 +634,7 @@ def form_index(target_language):
   
     homepage_text="welcome my friend we have carpets."
  
-    html = open(SUBFOLDER + "templates/jp-index.temp").read()
+    html = open(SUBFOLDER + "templates/index.html").read()
     
     from datetime import date
     hoy  = date.today()
@@ -596,6 +648,11 @@ def form_index(target_language):
     html = re.sub(r"\$\$jp-translation%%", elements_dictionary["journal pacifique-"+target_language],  html)
     html = re.sub(r"\$\$latest-articles%%",elements_dictionary["latest-articles-"+target_language],    html)
     
+    html = re.sub(r"\$\$slogan1%%",       slogans[0],    html)
+    html = re.sub(r"\$\$slogan2%%",       slogans[1],    html)
+    html = re.sub(r"\$\$slogan3%%",       slogans[2],    html)
+    html = re.sub(r"\$\$date%%", d1, html)
+    
     #save these to elements dictionary
     html = re.sub(r"\$\$homepage-text%%",  elements_dictionary["hometext-"+target_language],    html)
     
@@ -608,7 +665,7 @@ def form_index(target_language):
         if(articlessofar[key]["lang"]==target_language):
             asfl.append(key)
             
-    writenum = min(len(asfl),9)
+    writenum = min(len(asfl),22)
     
     for i in range (writenum):
         j = writenum-i-1
@@ -650,18 +707,14 @@ def refresh_indices():
 
 
 
-# In[28]:
+# In[30]:
 
 
 #get most recent 9 articles and get their "keys"
 
 def form_archive(target_language):
  
-    html = open(SUBFOLDER + "templates/jp-archive.temp").read()
-    
-    from datetime import date
-    hoy  = date.today()
-    d1   = hoy.strftime("%d/%m/%Y")
+    html = open(SUBFOLDER + "templates/archive.html").read()
     
     html = re.sub(r"\$\$date%%", d1, html)
 
@@ -670,6 +723,13 @@ def form_archive(target_language):
     html = re.sub(r"\$\$about%%",          elements_dictionary["about us-"+target_language],           html)
     html = re.sub(r"\$\$jp-translation%%", elements_dictionary["journal pacifique-"+target_language],  html)
     html = re.sub(r"\$\$latest-articles%%",elements_dictionary["latest-articles-"+target_language],    html)
+    
+    html = re.sub(r"\$\$homepage-text%%",  elements_dictionary["hometext-"+target_language],    html)
+    
+    html = re.sub(r"\$\$slogan1%%",       slogans[0],    html)
+    html = re.sub(r"\$\$slogan2%%",       slogans[1],    html)
+    html = re.sub(r"\$\$slogan3%%",       slogans[2],    html)
+    html = re.sub(r"\$\$date%%", d1, html)
     
     html = re.sub(r"\$\$target-language%%",target_language,  html)
 
@@ -690,8 +750,11 @@ def form_archive(target_language):
         link = articlessofar[key]["pathfromlang"][1:]
         titl = articlessofar[key]["headline"]
         date = articlessofar[key]["date"]
+        meta = articlessofar[key]["meta"]
         
-        article_text = f"<p>{date} <a href=\"{link}\" style=\"font-weight:900;\">{titl}</a></p>\n"
+        article_text = f"<p>{date} <a href=\"{link}\" style=\"font-weight:900;color:chocolate\">{titl}</a>\n<br>\n"
+        
+        article_text += f"<small style=\"color:gray\">{meta}</small></p>\n<br>\n"
     
         print(article_text)
         archive_text += article_text
@@ -717,22 +780,30 @@ def refresh_archives():
         f.write(htmlx)
 
 
-# In[29]:
+# In[31]:
 
 
 #get most recent 9 articles and get their "keys"
 
 def form_about(target_language):
  
-    html = open(SUBFOLDER + "templates/jp-about.temp").read()
+    html = open(SUBFOLDER + "templates/about.html").read()
 
     html = re.sub(r"\$\$home%%",           elements_dictionary["homepage-"+target_language],           html)
     html = re.sub(r"\$\$archive%%",        elements_dictionary["archive-"+target_language],            html)
     html = re.sub(r"\$\$about%%",          elements_dictionary["about us-"+target_language],           html)
     html = re.sub(r"\$\$jp-translation%%", elements_dictionary["journal pacifique-"+target_language],  html)
     
+    html = re.sub(r"\$\$slogan1%%",       slogans[0],    html)
+    html = re.sub(r"\$\$slogan2%%",       slogans[1],    html)
+    html = re.sub(r"\$\$slogan3%%",       slogans[2],    html)
+    html = re.sub(r"\$\$date%%", d1, html)
+    
     #save these to elements dictionary
+    html = re.sub(r"\$\$about-us%%",  elements_dictionary["about us-"+target_language],    html)
     html = re.sub(r"\$\$about-text%%",  elements_dictionary["abouttext-"+target_language],    html)
+    
+    html = re.sub(r"\$\$homepage-text%%",  elements_dictionary["hometext-"+target_language],    html)
     
     html = re.sub(r"\$\$target-language%%",target_language,  html)
     
@@ -761,19 +832,19 @@ def refresh_abouts():
 
 
 
-# In[30]:
+# In[32]:
 
 
 refresh_archives()
 
 
-# In[31]:
+# In[33]:
 
 
 refresh_abouts()
 
 
-# In[32]:
+# In[34]:
 
 
 refresh_indices()

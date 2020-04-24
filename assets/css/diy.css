@@ -1,0 +1,14 @@
+
+.trand-right-img > img {
+	width: 8em!important;
+	height: 100px;
+}
+
+.weekly2-img  img {
+	width: 10em!important;
+	height: auto;
+}
+
+.archive a {
+	color: red;
+}
