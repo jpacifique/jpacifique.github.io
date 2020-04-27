@@ -593,10 +593,10 @@ articlessofar
 import time
 
 for article in articlessofar:
-    tmp = targdic_to_dirfile(articlessofar[article], articlessofar[article]["lang"], elements_dictionary)
+    
 
 
-# In[26]:
+# In[ ]:
 
 
 import time
@@ -604,6 +604,7 @@ test_enable = False
 
 for article in articles:
     if (article not in articleurlssofar) or test_enable:
+        tmp = targdic_to_dirfile(articlessofar[article], articlessofar[article]["lang"], elements_dictionary)
         dic = sciencedaily_parse_article(article)
         for target_language in languages:
             try:
@@ -617,7 +618,7 @@ for article in articles:
         
 
 
-# In[27]:
+# In[ ]:
 
 
 save_obj(headlinessofar,     "headlinessofar")
@@ -625,14 +626,14 @@ save_obj(articlessofar,       "articlessofar")
 save_obj(articleurlssofar, "articleurlssofar")
 
 
-# In[28]:
+# In[ ]:
 
 
 def img_thumb_url(key):
     return re.sub("img/", "img/thumbnails/", articlessofar[key]["imgaddr"])
 
 
-# In[29]:
+# In[ ]:
 
 
 #get most recent 9 articles and get their "keys"
@@ -714,7 +715,7 @@ def refresh_indices():
 
 
 
-# In[30]:
+# In[ ]:
 
 
 #get most recent 9 articles and get their "keys"
@@ -787,7 +788,7 @@ def refresh_archives():
         f.write(htmlx)
 
 
-# In[31]:
+# In[ ]:
 
 
 #get most recent 9 articles and get their "keys"
@@ -839,19 +840,19 @@ def refresh_abouts():
 
 
 
-# In[32]:
+# In[ ]:
 
 
 refresh_archives()
 
 
-# In[33]:
+# In[ ]:
 
 
 refresh_abouts()
 
 
-# In[34]:
+# In[ ]:
 
 
 refresh_indices()
