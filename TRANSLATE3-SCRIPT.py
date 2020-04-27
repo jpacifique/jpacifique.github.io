@@ -592,7 +592,7 @@ articlessofar
 #for when a design change is implemented.
 import time
 
-for article in articlessofar:
+#for article in articlessofar:
     
 
 
