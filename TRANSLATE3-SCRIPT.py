@@ -44,7 +44,7 @@
 # 
 # 
 
-# In[1]:
+# In[ ]:
 
 
 #for colab
@@ -54,7 +54,7 @@
 ## Character limit: 15K
 
 
-# In[2]:
+# In[ ]:
 
 
 #import os
@@ -62,7 +62,7 @@
 #os.system(cmd)
 
 
-# In[3]:
+# In[ ]:
 
 
 from datetime import date
@@ -70,7 +70,7 @@ hoy  = date.today()
 d1   = hoy.strftime("%d/%m/%Y")
 
 
-# In[4]:
+# In[ ]:
 
 
 from googletrans import Translator
@@ -79,7 +79,7 @@ import re
 translator = Translator()
 
 
-# In[5]:
+# In[ ]:
 
 
 def find_between( s, first, last ):
@@ -91,14 +91,14 @@ def find_between( s, first, last ):
         return ""
 
 
-# In[6]:
+# In[ ]:
 
 
 def string_strip(s):
     return re.sub(r"[^A-Za-z0-9]", "-", s)
 
 
-# In[7]:
+# In[ ]:
 
 
 from urllib.request import Request, urlopen
@@ -181,7 +181,7 @@ def sciencedaily_parse_article(url):
   
 
 
-# In[8]:
+# In[ ]:
 
 
 def get_translation(article_dictionary,target_language):
@@ -220,7 +220,7 @@ def get_translation(article_dictionary,target_language):
     return translations
 
 
-# In[9]:
+# In[ ]:
 
 
 ("# deprecated")
@@ -233,7 +233,7 @@ def get_language_dictionary(target_language):
     return ld
 
 
-# In[10]:
+# In[ ]:
 
 
 slogans = [
@@ -243,7 +243,7 @@ slogans = [
 ]
 
 
-# In[11]:
+# In[ ]:
 
 
 def html_from_dictionary(translated_dictionary, target_language, language_dictionary): # translated & language could be just one dictionary this was stupid.
@@ -303,7 +303,7 @@ def html_from_dictionary(translated_dictionary, target_language, language_dictio
   
 
 
-# In[12]:
+# In[ ]:
 
 
 def getnewpath(translated_dict):
@@ -334,13 +334,13 @@ def getnewpath(translated_dict):
     return [newheadline,newpathaddr,urlheadline]
 
 
-# In[13]:
+# In[ ]:
 
 
 SUBFOLDER = ""
 
 
-# In[14]:
+# In[ ]:
 
 
 import pickle
@@ -354,7 +354,7 @@ def load_obj(name ):
         return pickle.load(f)
 
 
-# In[15]:
+# In[ ]:
 
 
 def dic_to_dirfile(dic,target_language, elements_dictionary):
@@ -379,7 +379,7 @@ def dic_to_dirfile(dic,target_language, elements_dictionary):
     return [htmlx,tr_di,newdirs[2],newdirs[0]]
 
 
-# In[16]:
+# In[ ]:
 
 
 def targdic_to_dirfile(tr_di,target_language, elements_dictionary):
@@ -400,7 +400,7 @@ def targdic_to_dirfile(tr_di,target_language, elements_dictionary):
     return [htmlx,tr_di,newdirs[2],newdirs[0]]
 
 
-# In[17]:
+# In[ ]:
 
 
 elements_dictionary = {
@@ -503,7 +503,7 @@ elements_dictionary = {
 }
 
 
-# In[18]:
+# In[ ]:
 
 
 def url_to_dirfile(url,target_language):
@@ -515,7 +515,7 @@ def url_to_dirfile(url,target_language):
     return [htmlx,ar_di]
 
 
-# In[19]:
+# In[ ]:
 
 
 import re
@@ -542,7 +542,7 @@ def get_article_urls_sd():
     return links
 
 
-# In[20]:
+# In[ ]:
 
 
 articles = get_article_urls_sd()
@@ -551,13 +551,13 @@ languages = ["es", "pt", "pl", "zh-CN", "de", "af"]
 #languages = ["de", "af"]
 
 
-# In[21]:
+# In[ ]:
 
 
 articles
 
 
-# In[22]:
+# In[ ]:
 
 
 #headlinessofar = []
@@ -565,7 +565,7 @@ articles
 #articleurlssofar = []
 
 
-# In[23]:
+# In[ ]:
 
 
 headlinessofar = load_obj("headlinessofar")
@@ -573,7 +573,7 @@ articlessofar = load_obj("articlessofar")
 articleurlssofar =load_obj("articleurlssofar")
 
 
-# In[24]:
+# In[ ]:
 
 
 articlessofar
@@ -585,7 +585,7 @@ articlessofar
 
 
 
-# In[25]:
+# In[ ]:
 
 
 #refresh already saved articles' html
@@ -593,7 +593,7 @@ articlessofar
 import time
 
 #for article in articlessofar:
-    
+#    tmp = targdic_to_dirfile(articlessofar[article], articlessofar[article]["lang"], elements_dictionary)
 
 
 # In[ ]:
@@ -604,7 +604,6 @@ test_enable = False
 
 for article in articles:
     if (article not in articleurlssofar) or test_enable:
-        tmp = targdic_to_dirfile(articlessofar[article], articlessofar[article]["lang"], elements_dictionary)
         dic = sciencedaily_parse_article(article)
         for target_language in languages:
             try:
@@ -668,16 +667,18 @@ def form_index(target_language):
     
     html = re.sub(r"\$\$target-language%%",target_language,  html)
 
+    asf_sorted = sorted(articlessofar.keys(), key=lambda x: articlessofar[x]['date'], reverse=True)
+
     asfl = []
-    for key in articlessofar:
+    for key in asf_sorted:
         if(articlessofar[key]["lang"]==target_language):
             asfl.append(key)
             
     writenum = min(len(asfl),22)
     
     for i in range (writenum):
-        j = writenum-i-1
-        #j=i+1
+        #j = writenum-i-1
+        j=i+1
         key = asfl[i]
     
         html = re.sub(r"\$\$article-link"+repr(j)+"%%",   articlessofar[key]["pathfromlang"][1:],           html)
@@ -741,8 +742,10 @@ def form_archive(target_language):
     
     html = re.sub(r"\$\$target-language%%",target_language,  html)
 
+    asf_sorted = sorted(articlessofar.keys(), key=lambda x: articlessofar[x]['date'], reverse=True)
+
     asfl = []
-    for key in articlessofar:
+    for key in asf_sorted:
         if(articlessofar[key]["lang"]==target_language):
             asfl.append(key)
             
@@ -751,8 +754,8 @@ def form_archive(target_language):
     archive_text = ""
     
     for i in range (writenum):
-        j = writenum-i-1
-        
+        #j = writenum-i-1
+        j = i
         key = asfl[j]
         
         link = articlessofar[key]["pathfromlang"][1:]
@@ -856,12 +859,6 @@ refresh_abouts()
 
 
 refresh_indices()
-
-
-# In[ ]:
-
-
-
 
 
 # In[ ]:
