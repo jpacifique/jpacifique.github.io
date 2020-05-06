@@ -1,0 +1,19 @@
+-prune
+! -iname browserconfig.xml
+! -iname site.webmanifest
+! -iname CNAME
+! -iname TRANSLATE3.ipynb
+! -iname TRANSLATE3-SCRIPT.py
+! -iname .gitignore
+! -iname sitemap.sh
+! -iname sitemap.sh.options
+! -iname sitemap.xml
+! -iname .\*
+! -path ./obj/\*
+! -path ./templates/\*
+! -path ./assets/\*
+! -path ./img/\*
+! -path ./ico/\*
+! -path ./sitemap-generator-master/\*
+! -path ./.git/\*
+! -path ./.ipynb_checkpoints/\*
