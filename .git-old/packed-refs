@@ -1,0 +1,3 @@
+# pack-refs with: peeled fully-peeled sorted 
+79a53753c58641aa2149be16ce9f45d5c8f3195e refs/remotes/origin/master
+f6ee83c136392398e9b65f55725be3028f92b0d4 refs/remotes/origin/time-machine
