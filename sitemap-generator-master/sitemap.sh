@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # url configuration
-URL="https://journalpacifique.com/"
+URL="https://scientificturk.dutl.uk/"
 
 # values: always hourly daily weekly monthly yearly never
 FREQ="weekly"
