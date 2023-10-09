@@ -1,25 +1,31 @@
 #!/usr/bin/env python
 # coding: utf-8
-# ## "scientific turk" web bot
-# parses sources for new articles, translates them into target languages ["es","pt","pl","zh-CN"]. Wraps it up in a simple html document and writes it out to the appropriate directory.
 
+# "scientific turk" web bot
+# parses sources for new articles, translates them into target languages ["es","pt","pl","zh-CN" ...]. 
+# Wraps it up in a simple html document and writes it out to the appropriate directory.
+
+import pickle
+import re
+import time
+import re
+from deep_translator import GoogleTranslator
+from datetime import date
+from googletrans import Translator
+from urllib.request import Request, urlopen
+from random import randrange
 
 get_ipython().system('pip install googletrans')
 get_ipython().system('pip install mechanize')
 get_ipython().system('pip3 install -U deep-translator')
 
-from deep_translator import GoogleTranslator
 
 def translate_adaptor(text, source, target):
     translator = GoogleTranslator(source=source, target=target)
     return translator.translate(text, src=source, dest=target)
 
-from datetime import date
 hoy  = date.today()
 d1   = hoy.strftime("%d/%m/%Y")
-
-from googletrans import Translator
-import re
 
 translator = Translator()
 
@@ -34,14 +40,10 @@ def find_between( s, first, last ):
 def string_strip(s):
     return re.sub(r"[^A-Za-z0-9]", "-", s)
 
-from urllib.request import Request, urlopen
-from random import randrange
 
 def sciencedaily_parse_article(url):
   
-    site = url
     html_string = ""
-    tagged_w_ps = ""
 
     # parse html
     req = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
@@ -55,22 +57,16 @@ def sciencedaily_parse_article(url):
     headline = find_between(html_string, '<h1 id="headline" class="headline">','</h1>')
   
     # get the meta
-  
     meta     = find_between(html_string, '<dd id="abstract">','</dd>')
   
     # get the img address
-  
     imgaddr  = find_between(html_string, 'center-block" src="','"')
     
     # set imgaddr image from sciencedaily if it exists. Else use one of the dummy imgs.
-    
     if(imgaddr!=""):
         imgaddr  = 'https://www.sciencedaily.com'+imgaddr
     else:
         imgaddr  = '/img/dummy'+repr(randrange(20))+'.jpeg'
-    
-    # get random image from dummies since sciencedaily images get dead links later on.
-    #imgaddr  = '../../../img/dummy'+repr(randrange(20))+'.jpeg'
   
     # get the img alt
   
@@ -78,7 +74,6 @@ def sciencedaily_parse_article(url):
     cred     = '\t'+find_between(html_string, '<div class="photo-credit"><em>','</div>')
   
     # get the citation
-  
     citation = find_between(html_string, '<div role="tabpanel" class="tab-pane active" id="citation_mla">','</div>')
   
     
@@ -96,7 +91,6 @@ def sciencedaily_parse_article(url):
     href_tab = href_tab + find_between(article, '<a href','</a>')
   
     # delete the href and useless tags from the article
-  
     article  = re.sub(r"<a href.*?</a>", "", article)
     article  = re.sub(r"<.*?>", "",          article)
     article  = re.sub(r" -- ", ", ",         article)
@@ -114,9 +108,7 @@ def get_translation(article_dictionary,target_language):
     token_in = "(#@)"
     if (target_language=="zh-CN"):
         token_out = "（＃@）"
-    else: token_out="(# @)"
-    print(">>--0--")
-      
+    else: token_out="(# @)"      
     
     #sırası karışmasın!! keylerden array oluştur, arrayi itere et.
     keys = ["headline","meta","article","imgalt"]
@@ -127,18 +119,12 @@ def get_translation(article_dictionary,target_language):
             big_string = big_string + token_in + article_dictionary[key]
         else:
             big_string = article_dictionary[key]
-
-    print(">>--1--")
             
     big_translated_string = translate_adaptor(big_string, source='en', target=target_language)
-
-    print(">>--2--")
     
     # a manual fix
     big_translated_string = big_translated_string.replace('(#@)', token_out)
     translations_array    = big_translated_string.split(token_out)
-
-    print(">>--3--", translations_array)
     
     for i in range (4):
         translations[keys[i]]=translations_array[i]
@@ -147,10 +133,7 @@ def get_translation(article_dictionary,target_language):
     translations["imgcredit"]=article_dictionary["imgcredit"]
     translations["href"]=article_dictionary["href"]
     translations["org-headline"]=article_dictionary["headline"]
-    translations["lang"]=target_language
-
-    print(">>--4--")
-    
+    translations["lang"]=target_language    
 
     return translations
 
@@ -219,9 +202,7 @@ def html_from_dictionary(translated_dictionary, target_language, language_dictio
     html = re.sub(r"-- ", ",",  html)
  
     html = re.sub(r"\$\$date%%", d1, html)
-  
-    #html = re.sub(r'</head>', '<style> p { text-indent: 30px;} </style>\n\t</head>', html)
-  
+    
     return html
   
 
@@ -254,7 +235,6 @@ def getnewpath(translated_dict):
 
 SUBFOLDER = ""
 
-import pickle
 
 def save_obj(obj, name ):
     with open(SUBFOLDER+'obj/'+ name + '.pkl', 'wb') as f:
@@ -273,31 +253,18 @@ def dic_to_dirfile(dic,target_language, elements_dictionary):
     #we used to translate all elements at every step, now it is automated due to
     #google translate's quota restrictions.
     
-    #zh_ld = get_language_dictionary(target_language)
-    print("--0--")
-
     tr_di = get_translation(dic,target_language)
 
-    print("--1--")
-
     htmlx = html_from_dictionary(tr_di, target_language, elements_dictionary)
-
-    print("--2--")
   
     newdirs = getnewpath(tr_di)
-
-    print("--3--")
   
     import os
     cmd = "mkdir -p "+SUBFOLDER+newdirs[1]
     os.system(cmd)
-
-    print("--4--")
   
     f= open(SUBFOLDER+newdirs[0],"w+")
     f.write(htmlx)
-
-    print("--5--")
 
     return [htmlx,tr_di,newdirs[2],newdirs[0]]
 
@@ -427,7 +394,6 @@ def url_to_dirfile(url,target_language):
   
     return [htmlx,ar_di]
 
-import re
 
 def get_article_urls_sd():
 
@@ -438,8 +404,6 @@ def get_article_urls_sd():
     
     links = []
     
-    #headline  = find_between(main_html, '<h5 class="clearfix"><a href="','">')
-    # releases  = re.findall(r"/releases.*?\.htm", main_html) #(main_html, '<h5 class="clearfix"><a href="','">')
     pattern = r'<a href="(/releases/[0-9]+/[0-9]+/[0-9]+.htm)">(.+?)</a>'
     releases = re.findall(pattern, main_html)
 
@@ -470,11 +434,10 @@ list(articlessofar.keys())
 
 #refresh already saved articles' html
 #for when a design change is implemented.
-import time
 
 #for article in articlessofar:
 #    tmp = targdic_to_dirfile(articlessofar[article], articlessofar[article]["lang"], elements_dictionary)
-import time
+
 test_enable = False
 
 for article in articles:
@@ -556,11 +519,9 @@ def form_index(target_language):
         html = re.sub(r"\$\$article-link"+repr(j)+"%%",   articlessofar[key]["pathfromlang"][1:],           html)
         print(articlessofar[key]["pathfromlang"])
         html = re.sub(r"\$\$headline"+repr(j)+"%%",           articlessofar[key]["headline"],           html)
-        #html = re.sub(r"\$\$headlinemeta"+repr(j)+"%%",           articlessofar[key]["meta"],           html)
         if(articlessofar[key]["imgaddr"][:2]!=".."):
             html = re.sub(r"\$\$headline-img"+repr(j)+"%%",      articlessofar[key]["imgaddr"],         html)
         else:
-            #html = re.sub(r"\$\$headline-img"+repr(j)+"%%",      articlessofar[key]["imgaddr"][6:],              html)
             html = re.sub(r"\$\$headline-img"+repr(j)+"%%",      img_thumb_url(key)[6:],              html)
             
     return html
